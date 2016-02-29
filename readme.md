@@ -13,7 +13,7 @@ All said and done, this reference is meant for you guys. You know yourselves the
 ---
 **Backslashes(\\) and escape sequences**
 
-Modern programming languages usually use \\ as a special character. \\ is used to represent certain useful characters that you can't type on a keyboard (remember how \\n is a newline)? This combination of \\ and another character is known as an escape sequence and is treated differently. If you want to type a literal backslash, just type two of them back to back `"\\\\"`. This is known as escaping the backslash. **Special note to Windows users:** Windows usually uses \\ in its file paths. So if you want to type backslashes in your path name, always remember to escape them.
+Modern programming languages usually use \\ as a special character. \\ is used to represent certain useful characters that you can't type on a keyboard (remember how \\n is a newline)? This combination of \\ and another character is known as an escape sequence and is treated differently. If you want to type a literal backslash, just type two of them back to back `"\\"`. This is known as escaping the backslash. **Special note to Windows users:** Windows usually uses \\ in its file paths. So if you want to type backslashes in your path name, always remember to escape them.
 
 In fact, to represent a single of these bad boys, I've been typing two backslashes like so \\\\ (which of course is 4 of them). See https://xkcd.com/1638/
 
@@ -31,7 +31,7 @@ An object that can be called like a function. Recall that you call a function, s
 💡Good practices
 ---
 
-*`while` vs `for` loops*
+>`while` vs `for` loops
 
 Where possible, try to avoid `while` loops. `while` loops aren't necessary for a huge majority of the problems you will come across and mistakes can be made very easily.
 
@@ -53,7 +53,7 @@ while i < len(my_list):
 ```
 Yes, both of these loops accomplish the same effect, but look at the number of lines you have to use for the `while` loop. What if you forget to increment `i`? Then you've got an infinite loop and you need to find the right place to do stuff. Make `for` loops a habit.
 
-*When to iterate over indices vs values*
+>When to iterate over indices vs values
 
 Generally, when you're working with one list, values will suffice. It's easier to do and when you reread your code, it will be pretty obvious what you're trying to do.
 
@@ -78,7 +78,7 @@ for i in range(len(my_list)):
 ---
 **Strings**
 
-`STRING.join(ITERABLE)`
+>`STRING.join(ITERABLE)`
 
 Takes the values in the iterable and joins them into a single string. These values will be separated by the left hand side STRING. Useful if you have a list but you need to return a string. Take note that the values in the iterable have to be strings, if they aren't, you'll have to make the effort to convert them yourself.
 ```
@@ -88,7 +88,7 @@ Takes the values in the iterable and joins them into a single string. These valu
 '123'
 ```
 
-`STRING.split(STRING)`
+>`STRING.split(STRING)`
 
 Splits a string into a list of words using the argument to separate the words. The separator can be omitted to split the string by whitespace. Useful when you have one string with multiple values separated by a certain pattern. Take note that the separator is always omitted in the resulting list.
 ```
@@ -104,7 +104,7 @@ Splits a string into a list of words using the argument to separate the words. T
 
 **Lists**
 
-*Create a list of length x*
+>Create a list of length x
 
 Python provides a handy shorthand to replicate lists and strings using the `*` operator.
 
@@ -117,7 +117,7 @@ Sometimes if you just need a list of length x, you can just use `range(x)`. If y
 [None, None, None]
 ```
 
-*Creating a list from another list*
+>Creating a list from another list
 
 For those who like their code to be really really short, the list comprehensions feature is extremely helpful in creating new lists from existing lists or other iterables. You can also optionally filter the values. A similar syntax can also be used for tuples.
 
@@ -130,7 +130,7 @@ For those who like their code to be really really short, the list comprehensions
 (0, 4, 8, 12, 16)
 ```
 
-*`LIST.sort()` vs sorted`(LIST)`*
+>`LIST.sort()` vs sorted`(LIST)`
 
 `sort()` sorts the original list and returns None, `sorted()` returns a NEW list that is the sorted form of the original. While they achieve similar effects, these two functions are **NOT INTERCHANGEABLE**. Both functions take in optional arguments that specify
 1. `cmp`: how to compare values
@@ -158,7 +158,7 @@ Sample demonstration of key:
 
 **Functions**
 
-*`lambda`*
+>`lambda`
 
 Lambda is a handy keyword to define short, one line functions. These functions don't even need to be named. In the example below, we create an unnamed (aka anonymous) function using the `lambda` keyword that takes one argument `x` and returns the value of `x + 1`. We can assign this function to the variable `add1` and call `add1` like any other function.
 
@@ -172,7 +172,7 @@ Lambda is a handy keyword to define short, one line functions. These functions d
 
 **Dictionaries**
 
-*Iterating over dictionaries*
+>Iterating over dictionaries
 
 When you try to iterate over a dictionary using a `for` loop, you will iterate over only the keys like below:
 ```
