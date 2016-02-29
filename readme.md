@@ -198,3 +198,55 @@ or, the somewhat nicer way to do it:
 >>> for key, value in d.items(): #I suggest you play with the items() method to see what it outputs
 ...     print key, value
 ```
+
+💡Misc tips and tricks
+---
+
+**Debugging**
+
+The easiest way to debug is just to insert `print` statements into your code so see what is being executed. Say I was using a conditional with multiple ways of returning `True`, but I don't know which condition is actually being fulfilled:
+
+```
+if x > 3:
+  return True
+elif x < 0:
+  return True
+elif type(x) == float:
+  return True
+```
+
+You can use `print` statements to diagnose the problem
+
+```
+if x > 3:
+  print 'LOL'
+  return True
+elif x < 0:
+  print 'LOLOL'
+  return True
+elif type(x) == float:
+  print 'LOLOLOL'
+  return True
+```
+
+or, more cleverly, try to print relevant variables
+
+```
+if x > 3:
+  print 1, x
+  return True
+elif x < 0:
+  print 2, x
+  return True
+elif type(x) == float:
+  print 3, x
+  return True
+```
+
+Those of you using IDEs like Canopy may find breakpoints useful as well. However if you're not used to it, I suggest just sticking to `print` statements; it's worked for me for years.
+
+**Terminal**
+
+An important part of not creating bugs in your program is knowing what bit of code does what. But what if you have to pull out that obscure function that you only know by name because someone mentioned it once while you were falling asleep? Besides reading the documentation, I suggest testing the function first in your terminal (or command prompt as some of you might call it). Just key in the function you want to run and see how it behaves before trying to use it in your code.
+
+Most IDE users (Canopy, PyCharm, etc.) should have a terminal window somewhere on their screen (usually at the bottom). The text editor hipsters (Sublime Text, IDLE, Notepad?) will probably need to open a separate terminal app and run the `python` command to do the same magic. Mac users should have no issues with running python from the terminal. If you get some unknown command or binary not on $PATH or something, I suggest googling 'add python to path' and follow a guide.
