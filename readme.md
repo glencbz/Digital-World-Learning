@@ -11,6 +11,39 @@ All said and done, this reference is meant for you guys. You know yourselves the
 
 💡Things you should know
 ---
+
+**`return` vs `break` vs `continue`**
+
+These keywords are a source of a lot of confusion among students, partially because they may not have the most intuitive names, but in summary:
+
+- `return` returns to where the program was before this function was called
+- `break` breaks out of a loop
+- `continue` continues to the *next* iteration of the loop without running the rest of the loop code
+
+`return` is used exclusively by functions. When you `return`, the function stops immediately, regardless of whether you have a loop or whatnot. It's named as such because normally a program is executed line by line, but when you perform a function call, you jump to another line. When that function ends, you need to `return` to wherever you were before you called the function. `return` is extremely important because it's used to determine the value of the function. Think of a function in terms of math, where f(x) has a value based on x. That value is what is `return`ed by the function.
+
+```
+def add1(x):
+  return x + 1
+
+print add1(1) #prints 2
+```
+
+`break` and `continue` on the other hand are used exclusively by loops. You can think of `break` as like a `return` for loops (or vice-versa) because `break` will stop the loop completely. On the other hand, `continue` does not stop the loop. `continue` will cause the loop to go to the next iteration without executing any more lines. Try running the example below to see if you understand.
+
+```
+i = 0
+while True:
+  i += 1
+  if i >= 10:
+    break
+  elif i == 5:
+    continue
+  print i
+```
+
+A question that some students ask is whether or not they should terminate a loop with `break` or `return`. Basically, as long as you eventually return the same value, it doesn't really matter. Using `return` might save you a line and `break` might make debugging a little easier, but generally you won't notice the difference.
+
 **Backslashes(\\) and escape sequences**
 
 Modern programming languages usually use \\ as a special character. \\ is used to represent certain useful characters that you can't type on a keyboard (remember how \\n is a newline)? This combination of \\ and another character is known as an escape sequence and is treated differently. If you want to type a literal backslash, just type two of them back to back `"\\"`. This is known as escaping the backslash. **Special note to Windows users:** Windows usually uses \\ in its file paths. So if you want to type backslashes in your path name, always remember to escape them.
