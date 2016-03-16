@@ -44,6 +44,69 @@ while True:
 
 A question that some students ask is whether or not they should terminate a loop with `break` or `return`. Basically, as long as you eventually return the same value, it doesn't really matter. Using `return` might save you a line and `break` might make debugging a little easier, but generally you won't notice the difference.
 
+**Shallow and Deep copy**
+
+The `copy` module has two copy methods `copy.copy` and `copy.deepcopy` which were both covered in class. The distinction is a bit subtle, but for practical purposes, you generally want `copy.deepcopy`
+
+But what's the difference?? To understand what's happening, we need to understand how objects work in Python. The values of the objects are not actually visible directly to Python, instead they are stored at a certain address in the computer's memory when Python runs. Python stores the references to these addresses, not the values of the objects. It's like a student who brings a cheatsheet to an exam; the student doesn't remember anything, but he knows where to find it on the cheatsheet (don't let this be you pls).
+
+The difference is that a shallow copy (`copy.copy`) only copies the references inside the object, not the actual values, whereas a deep copy creates copies of EVERYTHING inside the object. So a shallow copy is 'lazy', whereas a deep copy is more thorough. You can see what the pros and cons are in the link below.
+
+Let's look at an example of lists and copies. Remember that Python stores references, not values, so the list would look like a glossary, something like:
+```
+word: page_number
+element_0: reference_0,
+element_1: reference_1,
+element_2: reference_2
+```
+
+So when we run the code below
+
+```
+>>> from copy import *
+>>> a = [1,2,3]
+>>> b = copy(a)
+>>> b
+[1, 2, 3]
+>>> a[0] = 0
+>>> a
+[0, 2, 3]
+>>> b
+[1, 2, 3]
+```
+
+We start with
+```
+a = b
+element_0: reference_to_value_of_1,
+element_1: reference_to_value_of_2,
+element_2: reference_to_value_of_3
+```
+
+So even if we shallow copy `a` into `b`, there is no issue when we modify `a` because we're only changing `a`'s value of `element_0`, not `b`'s value. Compare this with a more unusual case:
+
+
+```
+>>> a = [[1,1], 2, 3]
+>>> b = copy(a)
+>>> a[0][0] = 0
+>>> a
+[[0, 1], 2, 3]
+>>> b
+[[0, 1], 2, 3]
+```
+
+```
+a = b
+element_0: reference_to_inner_list,
+element_1: reference_to_value_of_2,
+element_2: reference_to_value_of_3
+```
+
+When we modify the value of the inner list directly (`a[0][0] = 0`), `a` and `b` are still pointing to the same location in memory, but we are changing the value at that location. Therefore `a` and `b` will both be 'changed', even though `b` is copied.
+
+More technical explanation: https://docs.python.org/2/library/copy.html
+
 **Backslashes(\\) and escape sequences**
 
 Modern programming languages usually use \\ as a special character. \\ is used to represent certain useful characters that you can't type on a keyboard (remember how \\n is a newline)? This combination of \\ and another character is known as an escape sequence and is treated differently. If you want to type a literal backslash, just type two of them back to back `"\\"`. This is known as escaping the backslash. **Special note to Windows users:** Windows usually uses \\ in its file paths. So if you want to type backslashes in your path name, always remember to escape them.
@@ -100,7 +163,7 @@ for ele in my_list:
   print ele
 ```
 
-If what you want to do is to iterate over two lists simultaneously though (say, to calculate the pairwise sum), you can't do that using just values because you need 1 index to refer to two lists at the same time
+If what you want to do is to iterate over two lists simultaneously though (say, to calculate the pairwise sum), you can't do that using just values because you need an index to refer to two lists at the same time
 
 ```
 for i in range(len(my_list)):
