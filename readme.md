@@ -105,6 +105,8 @@ element_2: reference_to_value_of_3
 
 When we modify the value of the inner list directly (`a[0][0] = 0`), `a` and `b` are still pointing to the same location in memory, but we are changing the value at that location. Therefore `a` and `b` will both be 'changed', even though `b` is copied.
 
+If you want both lists to be independent, you will need to deep copy instead. This would create a new list for `b` and thus changes to `a` will no longer affect `b`.
+
 More technical explanation: https://docs.python.org/2/library/copy.html
 
 **Backslashes(\\) and escape sequences**
